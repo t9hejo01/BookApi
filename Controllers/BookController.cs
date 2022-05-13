@@ -15,7 +15,7 @@ namespace BookApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Get()
+        public async Task<ActionResult<List<Book>>> Get()
         {
             return Ok(await _context.Books.ToListAsync());
         }
@@ -57,6 +57,7 @@ namespace BookApi.Controllers
             return Ok(await _context.Books.ToListAsync());
         }
 
+        [HttpDelete]
         public async Task<ActionResult<List<Book>>> DeleteBook(int id)
         {
             var dbBook = await _context.Books.FindAsync(id);
